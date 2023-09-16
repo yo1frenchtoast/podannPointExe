@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cd8ibri77go8t"
+path="res://.godot/imported/ES_Night Bells - By Lotus.mp3-0588bfedbb17becb6177b45a0c9629c6.mp3str"
+
+[deps]
+
+source_file="res://unity_assets/Audio/Moon/ES_Night Bells - By Lotus.mp3"
+dest_files=["res://.godot/imported/ES_Night Bells - By Lotus.mp3-0588bfedbb17becb6177b45a0c9629c6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

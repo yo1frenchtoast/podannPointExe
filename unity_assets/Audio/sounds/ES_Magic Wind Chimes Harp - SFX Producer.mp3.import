@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c2kgfuc7h6ytm"
+path="res://.godot/imported/ES_Magic Wind Chimes Harp - SFX Producer.mp3-bab2f31231f27d599dc36ab99ea0b184.mp3str"
+
+[deps]
+
+source_file="res://unity_assets/Audio/sounds/ES_Magic Wind Chimes Harp - SFX Producer.mp3"
+dest_files=["res://.godot/imported/ES_Magic Wind Chimes Harp - SFX Producer.mp3-bab2f31231f27d599dc36ab99ea0b184.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

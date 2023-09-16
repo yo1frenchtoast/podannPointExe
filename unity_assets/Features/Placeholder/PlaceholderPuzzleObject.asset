@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cfaf61349fe654fbb52cc9a167fa7e, type: 3}
+  m_Name: PlaceholderPuzzleObject
+  m_EditorClassIdentifier: 
+  objectType: 0
+  messageFeedbacks:
+  - Hello, I'm a puzzle object, how are you doing?
+  - Second Message
+  - Third Message
+  audioFeedbacks:
+  - {fileID: 8300000, guid: 2e9508e94a1fdd3499c03db5255c14d1, type: 3}
+  - {fileID: 8300000, guid: a0361ca73df9da74093b989bff79d9db, type: 3}
+  - {fileID: 8300000, guid: 261e6c34402ce5f47bd2712a50e12396, type: 3}
+  particleFeedbacks:
+  - {fileID: 3951232815596285489, guid: a51cc0e83a9bb6948ab46d6cac457cd2, type: 3}
+  succeedAutomatically: 0
+  autoSucceedPuzzleObject: {fileID: 0}
+  objectName: Placeholder
+  representation: {fileID: 7482667652216324306, guid: 0087c3a3c0441fc4c8c791a8ac17187b, type: 3}
+  representationAnimatior: {fileID: 0}

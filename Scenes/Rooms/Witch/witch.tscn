@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7o7siiae8nw5"]
+
+[ext_resource type="Script" path="res://Scenes/Rooms/Witch/Scripts/witch.gd" id="1_3a36c"]
+[ext_resource type="Texture2D" uid="uid://dke5mmfodfwxy" path="res://Scenes/Rooms/Witch/Sprites/witch_lair.png" id="1_twbnh"]
+[ext_resource type="Texture2D" uid="uid://c3nmubdrdv5ut" path="res://Scenes/Rooms/Witch/candle_off.png" id="2_4ntr0"]
+[ext_resource type="Texture2D" uid="uid://dkhqdhy5y67b5" path="res://Scenes/Rooms/Witch/Sprites/plant_moon.png" id="3_g4twp"]
+[ext_resource type="Texture2D" uid="uid://n2hdtcxouj0m" path="res://Scenes/Rooms/Witch/Sprites/wheel.png" id="4_58b5p"]
+[ext_resource type="Texture2D" uid="uid://cdjfbie6xsjfp" path="res://Scenes/Rooms/Witch/Sprites/plant_key.png" id="4_seg5x"]
+[ext_resource type="Texture2D" uid="uid://huogcyf5fri8" path="res://Scenes/Rooms/Witch/Sprites/smoke.png" id="5_np2vo"]
+
+[node name="Witch" type="Node2D"]
+script = ExtResource("1_3a36c")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(960, 540)
+scale = Vector2(0.413, 0.413)
+transform = Transform2D(0.413, 0, 0, 0.413, 960, 540)
+
+[node name="ParallaxLayer_background" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_background"]
+texture = ExtResource("1_twbnh")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer_candle" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_candle"]
+texture = ExtResource("2_4ntr0")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer_plant" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D_moon" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_plant"]
+texture = ExtResource("3_g4twp")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D_key" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_plant"]
+visible = false
+texture = ExtResource("4_seg5x")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer_wheel" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(-644.068, 450.363)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_wheel"]
+texture = ExtResource("4_58b5p")
+metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer_smoke" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer_smoke"]
+position = Vector2(152.542, 2.42126)
+texture = ExtResource("5_np2vo")
+metadata/_edit_lock_ = true

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://berelaupiipiy"]
+
+[ext_resource type="Texture2D" uid="uid://cmn6g6hw8ntg1" path="res://Scenes/Rooms/Outro/Sprites/outro_thunasse_yass_queen_ludacris.png" id="1_2ya64"]
+
+[node name="Outro" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(960, 540)
+scale = Vector2(0.402, 0.402)
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_2ya64")
+metadata/_edit_lock_ = true

@@ -1,0 +1,243 @@
+fileFormatVersion: 2
+guid: d806750ad6ded9a4cacda8a5973a7a65
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1134624382520243233
+    second: plante_neutre_0
+  - first:
+      213: -2727596347608167656
+    second: plante_neutre_1
+  - first:
+      213: -3082631702408480307
+    second: plante_neutre_2
+  - first:
+      213: 2622910933849161574
+    second: plante_neutre_3
+  - first:
+      213: -7379946726526523807
+    second: plante_neutre_4
+  - first:
+      213: -8871164657190515214
+    second: plante_neutre_5
+  - first:
+      213: 943266802624028825
+    second: plante_neutre_6
+  - first:
+      213: -3812325291874905339
+    second: plante_neutre_7
+  - first:
+      213: 1416286073965665718
+    second: plante_neutre_8
+  - first:
+      213: 4133299624960058428
+    second: plante_neutre_9
+  - first:
+      213: -1078875864379690227
+    second: plante_neutre_10
+  - first:
+      213: 5675235932163644260
+    second: plante_neutre_11
+  - first:
+      213: -5464307807391928734
+    second: plante_neutre_12
+  - first:
+      213: -3629073058360900205
+    second: plante_neutre_13
+  - first:
+      213: 5352466640424712031
+    second: plante_neutre_14
+  - first:
+      213: -85963735167846003
+    second: plante_neutre_15
+  - first:
+      213: 3840243803024664435
+    second: plante_neutre_16
+  - first:
+      213: -5107280523119608138
+    second: plante_neutre_17
+  - first:
+      213: 7091372809796090259
+    second: plante_neutre_18
+  - first:
+      213: 2735003101553616912
+    second: plante_neutre_19
+  - first:
+      213: -8308750359532339433
+    second: plante_neutre_20
+  - first:
+      213: -6428509294970099077
+    second: plante_neutre_21
+  - first:
+      213: -377248718853999608
+    second: plante_neutre_22
+  - first:
+      213: -555083350763978614
+    second: plante_neutre_23
+  - first:
+      213: 540210295301977957
+    second: plante_neutre_24
+  - first:
+      213: 2244263873981428542
+    second: plante_neutre_25
+  - first:
+      213: -4600856167761915657
+    second: plante_neutre_26
+  - first:
+      213: 856160597078271641
+    second: plante_neutre_27
+  - first:
+      213: -3677409166442726292
+    second: plante_neutre_28
+  - first:
+      213: -3650424844235337320
+    second: plante_neutre_29
+  - first:
+      213: -5863411481358639082
+    second: plante_neutre_30
+  - first:
+      213: -18576349581830266
+    second: plante_neutre_31
+  - first:
+      213: -5837259170267793291
+    second: plante_neutre_32
+  - first:
+      213: -5548201336944720412
+    second: plante_neutre_33
+  - first:
+      213: -6340234005672665149
+    second: plante_neutre_34
+  - first:
+      213: -7418675048636927355
+    second: plante_neutre_35
+  - first:
+      213: 264814492509549616
+    second: plante_neutre_36
+  - first:
+      213: 6993647044833520005
+    second: plante_neutre_37
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: plante_neutre_0
+      rect:
+        serializedVersion: 2
+        x: 3985
+        y: 468
+        width: 634
+        height: 662
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdb4266b2210140f0800000000000000
+      internalID: -1134624382520243233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

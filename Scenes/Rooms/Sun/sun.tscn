@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj4stbddrcc7b"]
+
+[ext_resource type="Texture2D" uid="uid://ccmkpnvyqn2mj" path="res://Scenes/Rooms/Sun/Sprites/sun.png" id="1_x8mam"]
+
+[node name="Sun" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(960, 540)
+transform = Transform2D(1, 0, 0, 1, 960, 540)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(0.402, 0.402)
+texture = ExtResource("1_x8mam")
+metadata/_edit_lock_ = true

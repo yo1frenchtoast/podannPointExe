@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhsfgkjn6a136"]
+
+[ext_resource type="Texture2D" uid="uid://b5b4vbhfeph67" path="res://Scenes/Items/Witch/Candle/Sprites/candle_on.png" id="1_tit5e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_haxpc"]
+size = Vector2(192, 339)
+
+[node name="Candle" type="Node2D"]
+
+[node name="CharacterBody2D_candle" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D_candle"]
+texture = ExtResource("1_tit5e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D_candle"]
+position = Vector2(2, 70.5)
+shape = SubResource("RectangleShape2D_haxpc")

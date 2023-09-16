@@ -1,0 +1,249 @@
+fileFormatVersion: 2
+guid: ce4b56a5f4b3e7f4b9ee84b6d828bf5c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5258845961487933140
+    second: plante_eau_soleil_cle_0
+  - first:
+      213: 1520234034303217852
+    second: plante_eau_soleil_cle_1
+  - first:
+      213: -6042554513698253899
+    second: plante_eau_soleil_cle_2
+  - first:
+      213: -4371104050470690696
+    second: plante_eau_soleil_cle_3
+  - first:
+      213: -7076687409214190165
+    second: plante_eau_soleil_cle_4
+  - first:
+      213: -8730985569525358344
+    second: plante_eau_soleil_cle_5
+  - first:
+      213: 1363275921019255627
+    second: plante_eau_soleil_cle_6
+  - first:
+      213: 3428583756522479738
+    second: plante_eau_soleil_cle_7
+  - first:
+      213: -2094206195184535612
+    second: plante_eau_soleil_cle_8
+  - first:
+      213: 4170549446096373301
+    second: plante_eau_soleil_cle_9
+  - first:
+      213: 8537244512601810519
+    second: plante_eau_soleil_cle_10
+  - first:
+      213: -3154531884496012344
+    second: plante_eau_soleil_cle_11
+  - first:
+      213: 3581805916375610719
+    second: plante_eau_soleil_cle_12
+  - first:
+      213: -5961609777685029893
+    second: plante_eau_soleil_cle_13
+  - first:
+      213: -1199995903716944390
+    second: plante_eau_soleil_cle_14
+  - first:
+      213: -8752407972779467021
+    second: plante_eau_soleil_cle_15
+  - first:
+      213: 4938169542576091989
+    second: plante_eau_soleil_cle_16
+  - first:
+      213: -7224024348839996789
+    second: plante_eau_soleil_cle_17
+  - first:
+      213: 5454179598928858046
+    second: plante_eau_soleil_cle_18
+  - first:
+      213: -7046681353050862647
+    second: plante_eau_soleil_cle_19
+  - first:
+      213: 6127469478871205074
+    second: plante_eau_soleil_cle_20
+  - first:
+      213: -7776195346018771477
+    second: plante_eau_soleil_cle_21
+  - first:
+      213: -5145170715073739026
+    second: plante_eau_soleil_cle_22
+  - first:
+      213: 1548496596870162805
+    second: plante_eau_soleil_cle_23
+  - first:
+      213: 4601284298924375213
+    second: plante_eau_soleil_cle_24
+  - first:
+      213: -4282553705879372925
+    second: plante_eau_soleil_cle_25
+  - first:
+      213: -9075845307433684054
+    second: plante_eau_soleil_cle_26
+  - first:
+      213: -1662398167591238901
+    second: plante_eau_soleil_cle_27
+  - first:
+      213: -5094569664201038229
+    second: plante_eau_soleil_cle_28
+  - first:
+      213: 6740162462216078402
+    second: plante_eau_soleil_cle_29
+  - first:
+      213: 4518251629056802552
+    second: plante_eau_soleil_cle_30
+  - first:
+      213: -6942437614160134773
+    second: plante_eau_soleil_cle_31
+  - first:
+      213: 470539826354738985
+    second: plante_eau_soleil_cle_32
+  - first:
+      213: -2804158078458726206
+    second: plante_eau_soleil_cle_33
+  - first:
+      213: 4830158221818055261
+    second: plante_eau_soleil_cle_34
+  - first:
+      213: -8037759369365497475
+    second: plante_eau_soleil_cle_35
+  - first:
+      213: 1534102163510133811
+    second: plante_eau_soleil_cle_36
+  - first:
+      213: -2477415400046497943
+    second: plante_eau_soleil_cle_37
+  - first:
+      213: 3169746656039508254
+    second: plante_eau_soleil_cle_38
+  - first:
+      213: -5224116449057526308
+    second: plante_eau_soleil_cle_39
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: plante_eau_soleil_cle_0
+      rect:
+        serializedVersion: 2
+        x: 3926
+        y: 422
+        width: 748
+        height: 1139
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21a309e573d407b0800000000000000
+      internalID: -5258845961487933140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

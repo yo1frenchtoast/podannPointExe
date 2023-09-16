@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c33gypty7fo8e"
+path="res://.godot/imported/ES_A Combination of Strengths - Phoenix Tail.mp3-1a39c07ea38941e001fc768a96e41807.mp3str"
+
+[deps]
+
+source_file="res://unity_assets/Audio/donkey/ES_A Combination of Strengths - Phoenix Tail.mp3"
+dest_files=["res://.godot/imported/ES_A Combination of Strengths - Phoenix Tail.mp3-1a39c07ea38941e001fc768a96e41807.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

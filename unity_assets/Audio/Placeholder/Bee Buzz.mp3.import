@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://e2chyrja18du"
+path="res://.godot/imported/Bee Buzz.mp3-d84ea41649f6ef1645727e74e0e02cc1.mp3str"
+
+[deps]
+
+source_file="res://unity_assets/Audio/Placeholder/Bee Buzz.mp3"
+dest_files=["res://.godot/imported/Bee Buzz.mp3-d84ea41649f6ef1645727e74e0e02cc1.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
