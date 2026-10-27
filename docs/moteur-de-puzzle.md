@@ -8,6 +8,7 @@ Ce document décrit le moteur générique porté depuis la version Unity de la g
 ```
 project.godot
 ├── autoload GameState  ─ Scripts/Autoload/game_state.gd   état de la partie
+├── autoload Audio      ─ Scenes/Audio/audio.tscn          musiques et effets sonores
 └── autoload Hud        ─ Scenes/UI/hud.tscn               dialogue, inventaire, curseur
 
 Scripts/Puzzle/
@@ -255,6 +256,35 @@ libres (`get_flag` / `set_flag`) : météo courante, salles déverrouillées…
 `GameState.reset()` remet la partie à zéro.
 
 Signaux : `inventory_changed`, `selected_item_changed(item)`, `message_requested(text)`.
+
+## Son (`Audio`)
+
+`Scenes/Audio/audio.tscn`, autoload. Les fichiers restent dans `unity_assets/Audio/`
+(≈ 90 Mo de musiques, inutile de les dupliquer).
+
+**Musiques** : chaque salle a sa liste dans `PuzzleRoom.music` (l'intro et l'outro dans
+`intro_music` / `outro_music` du monde). Au début d'un glissement, le monde appelle
+`Audio.play_music()` : fondu enchaîné de `crossfade_duration` secondes (comme le glissement),
+puis les morceaux de la liste s'enchaînent en boucle. En revenant dans une salle, on
+reprend au morceau suivant de sa liste. Une salle lancée seule (F6) joue sa musique.
+
+**Effets** : `GameState` signale le résultat de chaque interaction
+(`interaction_result`), `Audio` joue l'effet correspondant :
+
+| Résultat | Quand | Effet (`audio.tscn`) |
+|---|---|---|
+| `pickup` | un objet arrive dans l'inventaire | `sfx_pickup` (Bubble Blip) |
+| `success` | un objet change d'état, combinaison réussie | `sfx_success` (Suction Pop) |
+| `fail` | mauvais objet, refus, porte fermée | `sfx_fail` (Melody Low Sad) |
+| `unlock` | une porte s'ouvre | `sfx_unlock` (Wind Chimes) |
+| — | prise d'un objet en main | `sfx_select` (Pen Clicking) |
+
+Un clic qui n'affiche qu'une réplique ne joue rien. Un `PuzzleObject` qui a ses propres
+`sounds` les joue **à la place** de l'effet générique : c'est le cas des trois clés et de
+la bourse pleine (carillon).
+
+Volumes : `music_volume_db` et `sfx_volume_db` dans `audio.tscn`. **M** coupe ou rétablit
+tout le son.
 
 ## Images
 

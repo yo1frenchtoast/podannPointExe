@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameState="*res://Scripts/Autoload/game_state.gd"
+Audio="*res://Scenes/Audio/audio.tscn"
 Hud="*res://Scenes/UI/hud.tscn"
 
 [display]

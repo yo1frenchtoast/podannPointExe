@@ -27,6 +27,21 @@ Intro → Lune (sorcière) ⇄ Soleil ⇄ Temps ⇄ Âne → Outro
 - **Âne** : fermée par trois serrures, il faut les trois clés (Lune, Soleil, Temps).
 - **Outro** : atteinte automatiquement quand on a rempli la bourse.
 
+## Musiques
+
+Aucune n'était branchée dans Unity : elles sont réparties selon leur dossier
+(`unity_assets/Audio/<Salle>/`). L'intro et l'outro piochent dans le dossier `donkey`,
+qui en avait cinq.
+
+| Salle | Morceaux (dans l'ordre) |
+|---|---|
+| Intro | Uncovered Secrets |
+| Lune | Night Bells, Natural Cause, Bionic |
+| Soleil | Helios, Change My Style, Nintendo Revolution, Poisoned Blade |
+| Temps | Idlewild, Somewhere in Dreams, Forgetness |
+| Âne | Dark Depths, Sudden Death |
+| Outro | Fight to Win, A Combination of Strengths |
+
 ## Lune (sorcière) — `Scenes/Rooms/Witch/`
 
 | Objet | Ce qui se passe |
@@ -130,6 +145,6 @@ Unity n'en avait pas pour ces moments, elles sont nouvelles (à réécrire libre
   en tissu à lunes, vide / débordant de pièces), à remplacer par un vrai dessin.
   La bourse prend la place du tissu dans l'inventaire.
 - **Non utilisés** : lavande (`lavander`, pas de position connue), lune en métal
-  (`lune-metal`), musiques et sons de `unity_assets/Audio/` (aucun n'était branché),
+  (`lune-metal`), sons « Blink Twice », « Bee Buzz » et « Slapping Three Faces »,
   `Scenes/Items/Witch/Candle/Candle.tscn`, `Scenes/Items/Witch/Lavanda/`.
 - **Outro** : simple image, pas de crédits ni de retour au menu.

@@ -27,5 +27,5 @@ vers **Godot 4.7** (version Steam).
 
 Ouvrir le dossier dans Godot 4.7+ puis F5. Clic gauche pour interagir, clic droit pour
 lâcher l'objet en main, flèches sur les côtés (ou ←/→, Q/D au clavier) pour changer de
-salle, Entrée ou Espace pour passer l'intro. En debug, F6 lance
+salle, Entrée ou Espace pour passer l'intro, M pour couper le son. En debug, F6 lance
 la salle ouverte seule et F9 y donne les objets venant des autres salles.

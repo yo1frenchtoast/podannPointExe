@@ -72,11 +72,11 @@ func interact(held: PuzzleObject) -> void:
 			GameState.play_feedback(state)
 		else:
 			var text := state.wrong_item_message
-			GameState.show_message(text if not text.is_empty() else GameState.DEFAULT_WRONG_ITEM_MESSAGE)
+			GameState.fail(text if not text.is_empty() else GameState.DEFAULT_WRONG_ITEM_MESSAGE)
 		return
 	if not interaction.accepted:
 		var text := interaction.message
-		GameState.show_message(text if not text.is_empty() else GameState.DEFAULT_REFUSED_MESSAGE)
+		GameState.fail(text if not text.is_empty() else GameState.DEFAULT_REFUSED_MESSAGE)
 		return
 
 	# Objet dont on affiche le message : l'objet reçu, sinon le nouvel état, sinon l'état actuel.
@@ -95,7 +95,8 @@ func interact(held: PuzzleObject) -> void:
 	elif interaction.next_state != null:
 		set_state(interaction.next_state)
 	GameState.select_item(null)
-	GameState.play_feedback(feedback_object, interaction.message)
+	var result := &"pickup" if interaction.give_item != null else &"success"
+	GameState.play_feedback(feedback_object, interaction.message, result)
 
 
 ## Passe à [param new_state] et l'enregistre dans [GameState].

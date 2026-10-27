@@ -34,6 +34,11 @@ const ROOM_CENTER := Vector2(960, 540)
 ## Profondeur des murs (voir [member DepthLayer.depth]). Dans Unity, les murs étaient
 ## 5 unités devant les fonds, d'où ≈ 0,18.
 @export var wall_depth: float = 0.18
+@export_group("Musique")
+## Musiques de l'intro et de l'outro (qui ne sont pas des [PuzzleRoom]). Les autres salles
+## ont la leur dans [member PuzzleRoom.music].
+@export var intro_music: Array[AudioStream] = []
+@export var outro_music: Array[AudioStream] = []
 @export_group("Fin")
 ## Objet dont l'obtention déclenche le passage à l'outro.
 @export var ending_item: PuzzleObject
@@ -64,6 +69,7 @@ func _ready() -> void:
 	_left_button.pressed.connect(func() -> void: go_to(current_index - 1))
 	_right_button.pressed.connect(func() -> void: go_to(current_index + 1))
 	GameState.inventory_changed.connect(_check_ending)
+	Audio.play_music(_music_for(current_index))
 	_enter_room(current_index)
 
 
@@ -116,6 +122,8 @@ func _slide_to(index: int) -> void:
 	if next != null:
 		next.on_enter()
 	Hud.set_room_active(next != null)
+	# Fondu enchaîné de la musique pendant le glissement.
+	Audio.play_music(_music_for(index))
 	_sliding = true
 	_update_navigation()
 
@@ -178,6 +186,15 @@ func _is_key(event: InputEvent, keycodes: Array) -> bool:
 	if key_event == null or not key_event.pressed or key_event.echo:
 		return false
 	return keycodes.has(key_event.keycode) or keycodes.has(key_event.physical_keycode)
+
+
+func _music_for(index: int) -> Array:
+	if index == 0:
+		return intro_music
+	if index == _rooms.size() - 1:
+		return outro_music
+	var room := _rooms[index] as PuzzleRoom
+	return room.music if room != null else []
 
 
 func _room_center(index: int) -> Vector2:

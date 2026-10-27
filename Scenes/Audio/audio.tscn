@@ -1,0 +1,17 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Autoload/audio.gd" id="1_audio"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/sounds/ES_Bubble Blip 2 - SFX Producer.mp3" id="2_pickup"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/sounds/ES_Suction Pop 7 - SFX Producer.mp3" id="3_success"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/sounds/ES_Melody Low Sad - SFX Producer.mp3" id="4_fail"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/sounds/ES_Magic Wind Chimes Harp - SFX Producer.mp3" id="5_unlock"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/Placeholder/Pen Clicking .mp3" id="6_select"]
+
+[node name="Audio" type="Node"]
+process_mode = 3
+script = ExtResource("1_audio")
+sfx_pickup = ExtResource("2_pickup")
+sfx_success = ExtResource("3_success")
+sfx_fail = ExtResource("4_fail")
+sfx_unlock = ExtResource("5_unlock")
+sfx_select = ExtResource("6_select")

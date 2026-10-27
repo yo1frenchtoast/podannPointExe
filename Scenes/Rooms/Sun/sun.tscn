@@ -10,9 +10,14 @@
 [ext_resource type="Resource" path="res://Data/Puzzles/Sun/soleil.tres" id="7_soleil"]
 [ext_resource type="Resource" path="res://Data/Puzzles/Sun/cupcake.tres" id="8_cupcake"]
 [ext_resource type="Resource" path="res://Data/Puzzles/Weather/note_musique.tres" id="9_note"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/Sun/ES_Helios - Lexica.mp3" id="91_music"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/Sun/ES_Change My Style - Glow Machine.mp3" id="92_music"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/Sun/ES_Nintendo Revolution - Rolla Coasta.mp3" id="93_music"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/Sun/ES_Poisoned Blade - Sightless in Shadow.mp3" id="94_music"]
 
 [node name="Sun" type="Node2D"]
 script = ExtResource("1_room")
+music = Array[AudioStream]([ExtResource("91_music"), ExtResource("92_music"), ExtResource("93_music"), ExtResource("94_music")])
 debug_items = Array[Resource]([ExtResource("9_note")])
 metadata/_edit_lock_ = true
 

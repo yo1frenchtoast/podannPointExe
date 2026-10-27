@@ -13,9 +13,13 @@
 [ext_resource type="Resource" path="res://Data/Puzzles/Weather/coton.tres" id="10_coton"]
 [ext_resource type="Resource" path="res://Data/Puzzles/Sun/rayon_soleil.tres" id="11_rayon"]
 [ext_resource type="Resource" path="res://Data/Puzzles/Witch/tapis.tres" id="12_tapis"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/Moon/ES_Night Bells - By Lotus.mp3" id="91_music"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/Moon/ES_Natural Cause - Ethan Sloan.mp3" id="92_music"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/Moon/ES_Bionic - Ethan Sloan.mp3" id="93_music"]
 
 [node name="Witch" type="Node2D"]
 script = ExtResource("1_3a36c")
+music = Array[AudioStream]([ExtResource("91_music"), ExtResource("92_music"), ExtResource("93_music")])
 debug_items = Array[Resource]([ExtResource("8_flacon"), ExtResource("9_roue"), ExtResource("10_coton"), ExtResource("11_rayon")])
 metadata/_edit_lock_ = true
 

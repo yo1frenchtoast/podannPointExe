@@ -9,9 +9,12 @@
 [ext_resource type="Resource" path="res://Data/Puzzles/Witch/cle_lune.tres" id="7_cle_lune"]
 [ext_resource type="Resource" path="res://Data/Puzzles/Sun/cle_soleil.tres" id="8_cle_soleil"]
 [ext_resource type="Resource" path="res://Data/Puzzles/Weather/cle_temps.tres" id="9_cle_temps"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/donkey/ES_Dark Depths - Ted Beattie.mp3" id="91_music"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/donkey/ES_Sudden Death (Instrumental Version) - Sightless in Shadow.mp3" id="92_music"]
 
 [node name="Donkey" type="Node2D"]
 script = ExtResource("1_room")
+music = Array[AudioStream]([ExtResource("91_music"), ExtResource("92_music")])
 debug_items = Array[Resource]([ExtResource("6_bourse")])
 required_items = Array[Resource]([ExtResource("7_cle_lune"), ExtResource("8_cle_soleil"), ExtResource("9_cle_temps")])
 locked_message = "Une porte à trois serrures : une lune, un soleil et un nuage. Il me faut les trois clés."

@@ -18,6 +18,9 @@ signal inventory_changed
 signal selected_item_changed(item: PuzzleObject)
 ## Une réplique doit être affichée dans la boîte de dialogue.
 signal message_requested(text: String)
+## Résultat d'une interaction, pour les effets sonores (voir `Audio`) :
+## [code]&"pickup"[/code], [code]&"success"[/code], [code]&"fail"[/code] ou [code]&"unlock"[/code].
+signal interaction_result(kind: StringName)
 
 ## Réplique quand on utilise un objet qui n'a aucune interaction prévue.
 const DEFAULT_WRONG_ITEM_MESSAGE := "Ça ne donne rien."
@@ -35,13 +38,6 @@ var _click_counts: Dictionary = {}
 var _instance_states: Dictionary = {}
 # Valeurs libres propres aux salles (météo courante, salle déverrouillée...). Voir get_flag.
 var _flags: Dictionary = {}
-var _audio: AudioStreamPlayer
-
-
-func _ready() -> void:
-	_audio = AudioStreamPlayer.new()
-	_audio.name = "FeedbackAudio"
-	add_child(_audio)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -121,10 +117,10 @@ func combine_items(held: PuzzleObject, target: PuzzleObject) -> bool:
 		interaction = held.find_interaction(target)
 	if interaction == null:
 		var text := target.wrong_item_message
-		show_message(text if not text.is_empty() else DEFAULT_WRONG_ITEM_MESSAGE)
+		fail(text if not text.is_empty() else DEFAULT_WRONG_ITEM_MESSAGE)
 		return false
 	if not interaction.accepted:
-		show_message(interaction.message if not interaction.message.is_empty() else DEFAULT_REFUSED_MESSAGE)
+		fail(interaction.message if not interaction.message.is_empty() else DEFAULT_REFUSED_MESSAGE)
 		return false
 
 	if interaction.consume_item:
@@ -141,7 +137,7 @@ func combine_items(held: PuzzleObject, target: PuzzleObject) -> bool:
 		feedback_object = interaction.next_state
 	if interaction.give_item != null:
 		feedback_object = interaction.give_item
-	play_feedback(feedback_object, interaction.message)
+	play_feedback(feedback_object, interaction.message, &"pickup" if interaction.give_item != null else &"success")
 	return true
 
 #endregion
@@ -150,8 +146,10 @@ func combine_items(held: PuzzleObject, target: PuzzleObject) -> bool:
 #region Retours (messages et sons)
 
 ## Affiche le message et joue le son suivants de [param object], puis avance son compteur.
-## [param override_message] remplace le message s'il n'est pas vide (le son reste joué).
-func play_feedback(object: PuzzleObject, override_message: String = "") -> void:
+## [param override_message] remplace le message s'il n'est pas vide.
+## [param result] ([code]&"pickup"[/code], [code]&"success"[/code]...) déclenche l'effet sonore
+## générique correspondant, sauf si l'objet a ses propres [member PuzzleObject.sounds].
+func play_feedback(object: PuzzleObject, override_message: String = "", result: StringName = &"") -> void:
 	var key := _object_key(object)
 	var count: int = _click_counts.get(key, 0)
 	_click_counts[key] = count + 1
@@ -162,11 +160,19 @@ func play_feedback(object: PuzzleObject, override_message: String = "") -> void:
 	if not text.is_empty():
 		show_message(text)
 
+	var sound: AudioStream = null
 	if not object.sounds.is_empty():
-		var sound := object.sounds[count % object.sounds.size()]
-		if sound != null:
-			_audio.stream = sound
-			_audio.play()
+		sound = object.sounds[count % object.sounds.size()]
+	if sound != null:
+		Audio.play_object_sound(sound)
+	elif result != &"":
+		interaction_result.emit(result)
+
+
+## Affiche une réplique d'échec (mauvais objet, porte fermée...) avec l'effet sonore d'échec.
+func fail(text: String) -> void:
+	show_message(text)
+	interaction_result.emit(&"fail")
 
 
 func show_message(text: String) -> void:

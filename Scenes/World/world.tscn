@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" path="res://Scenes/Rooms/Donkey/donkey.tscn" id="7_donkey"]
 [ext_resource type="PackedScene" path="res://Scenes/Rooms/Outro/Outro.tscn" id="8_outro"]
 [ext_resource type="FontFile" path="res://unity_assets/Art/alagard.ttf" id="9_font"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/donkey/ES_Uncovered Secrets - Sage Oursler.mp3" id="91_music"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/donkey/ES_Fight to Win - Sven Karlsson.mp3" id="92_music"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/donkey/ES_A Combination of Strengths - Phoenix Tail.mp3" id="93_music"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nav"]
 
@@ -31,6 +34,8 @@ Label/font_sizes/font_size = 48
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_world")
+intro_music = Array[AudioStream]([ExtResource("91_music")])
+outro_music = Array[AudioStream]([ExtResource("92_music"), ExtResource("93_music")])
 ending_item = ExtResource("2_ending")
 
 [node name="Rooms" type="Node2D" parent="."]

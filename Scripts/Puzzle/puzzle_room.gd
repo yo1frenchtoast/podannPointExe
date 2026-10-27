@@ -18,6 +18,8 @@ extends Node2D
 ## En build de debug, [kbd]F9[/kbd] ajoute [member debug_items] à l'inventaire pour tester
 ## une énigme sans refaire toutes les précédentes.
 
+## Musiques de la salle (des [AudioStream]), jouées en boucle dans l'ordre. Voir `Audio`.
+@export var music: Array[AudioStream] = []
 ## Objets donnés par [kbd]F9[/kbd] en build de debug (des [PuzzleObject]).
 @export var debug_items: Array[Resource] = []
 
@@ -45,6 +47,7 @@ func _ready() -> void:
 	# Salle lancée seule (F6) : pas de monde pour l'activer.
 	if get_parent() == get_tree().root:
 		Hud.set_room_active(true)
+		Audio.play_music(music)
 		active = true
 		on_enter()
 
@@ -68,13 +71,14 @@ func try_unlock() -> bool:
 		return true
 	for item in required_items:
 		if not GameState.has_item(item as PuzzleObject):
-			GameState.show_message(locked_message)
+			GameState.fail(locked_message)
 			return false
 	for item in required_items:
 		GameState.remove_item(item as PuzzleObject)
 	GameState.set_flag(_unlock_flag(), true)
 	if not unlock_message.is_empty():
 		GameState.show_message(unlock_message)
+	GameState.interaction_result.emit(&"unlock")
 	return true
 
 

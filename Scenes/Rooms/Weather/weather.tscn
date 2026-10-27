@@ -13,6 +13,9 @@
 [ext_resource type="Resource" path="res://Data/Puzzles/Weather/charrette.tres" id="12_charrette"]
 [ext_resource type="Resource" path="res://Data/Puzzles/Witch/fiole_vide_inv.tres" id="13_fiole"]
 [ext_resource type="Resource" path="res://Data/Puzzles/Witch/bobine_fil.tres" id="14_bobine"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/Weather/ES_Idlewild - Boone River.mp3" id="91_music"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/Weather/ES_Somewhere in Dreams - Magnus Ludvigsson.mp3" id="92_music"]
+[ext_resource type="AudioStream" path="res://unity_assets/Audio/Weather/ES_Forgetness - Rikard From.mp3" id="93_music"]
 
 [sub_resource type="Gradient" id="Gradient_drop"]
 offsets = PackedFloat32Array(0, 1)
@@ -27,6 +30,7 @@ fill_to = Vector2(0.5, 1)
 
 [node name="Weather" type="Node2D"]
 script = ExtResource("1_room")
+music = Array[AudioStream]([ExtResource("91_music"), ExtResource("92_music"), ExtResource("93_music")])
 backgrounds = Array[Texture2D]([ExtResource("2_sunny"), ExtResource("3_cloudy"), ExtResource("4_rainy")])
 debug_items = Array[Resource]([ExtResource("13_fiole"), ExtResource("14_bobine")])
 metadata/_edit_lock_ = true
