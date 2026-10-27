@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Sun/Sprites/cake_empty.png" id="2_cake_empty"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"gateau_vide"
+display_name = "Saladier"
+messages = Array[String](["Il n'en reste plus une miette."])
+texture = ExtResource("2_cake_empty")

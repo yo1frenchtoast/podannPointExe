@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Items/Sun/Rainbow/Sprites/rainbow.png" id="2_rainbow"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"arc_en_ciel"
+display_name = "Arc-en-ciel"
+messages = Array[String](["Une pincée de magie."])
+icon = ExtResource("2_rainbow")

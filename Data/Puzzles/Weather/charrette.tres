@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Weather/Sprites/cart.png" id="2_cart"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="3_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Weather/charrette_cassee.tres" id="4_charrette_cassee"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Weather/roue.tres" id="5_roue"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("3_puzzle_interaction")
+next_state = ExtResource("4_charrette_cassee")
+give_item = ExtResource("5_roue")
+
+[resource]
+script = ExtResource("1_obj")
+id = &"charrette"
+display_name = "Charrette"
+messages = Array[String](["On a pas tant de chose que ça à transporter, si ?"])
+texture = ExtResource("2_cart")
+interactions = Array[Resource]([SubResource("Resource_1")])

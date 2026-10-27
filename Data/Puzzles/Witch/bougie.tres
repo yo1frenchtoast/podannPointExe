@@ -16,4 +16,5 @@ id = &"bougie"
 display_name = "Bougie"
 messages = Array[String](["Comme une envie de cramer des trucs."])
 texture = ExtResource("2_candle_off")
+texture_offset = Vector2(115.0, 318.5)
 interactions = Array[Resource]([SubResource("Resource_1")])

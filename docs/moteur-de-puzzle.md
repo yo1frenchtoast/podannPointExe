@@ -14,8 +14,11 @@ Scripts/Puzzle/
 ├── puzzle_object.gd       PuzzleObject       (Resource)  un état d'objet
 ├── puzzle_interaction.gd  PuzzleInteraction  (Resource)  une réaction à un clic
 ├── puzzle_instance.gd     PuzzleInstance     (Sprite2D)  un objet posé dans une salle
-└── puzzle_room.gd         PuzzleRoom         (Node2D)    une salle jouable
+├── puzzle_room.gd         PuzzleRoom         (Node2D)    une salle jouable
+└── depth_layer.gd         DepthLayer         (Node2D)    un calque de parallaxe
 
+Scenes/World/world.tscn       le monde : salles côte à côte, caméra, flèches (scène principale)
+Scenes/Rooms/<Salle>/         une scène par salle
 Data/Puzzles/<Salle>/*.tres   les données des énigmes (un fichier par état)
 ```
 
@@ -117,49 +120,118 @@ Un `Sprite2D` avec le script `puzzle_instance.gd`. On règle :
 - `hit_rect` (optionnel) : zone cliquable en coordonnées locales.
 
 Sans `hit_rect`, la zone cliquable est **l'ensemble des pixels non transparents** de la
-texture. Comme les overlays des salles sont des images plein cadre (même taille que le
-fond, 4777×2792), l'objet est cliquable exactement là où il est dessiné, sans forme de
-collision à tracer. Un `hit_rect` est nécessaire pour un état sans texture (l'encens
-éteint, le rouet sans roue) ou pour agrandir une zone trop fine.
+texture : l'objet est cliquable exactement là où il est dessiné, sans forme de collision à
+tracer. Un `hit_rect` est nécessaire pour un état sans texture (l'encens éteint, le puits
+vide, le tas d'or dessiné dans le fond) ou pour agrandir une zone trop fine.
 
 Quand plusieurs objets se chevauchent, celui qui est **le plus bas dans l'arbre de scène**
 (donc dessiné par-dessus) gagne.
 
 L'état de chaque instance est sauvegardé dans `GameState` à chaque changement (clé :
-chemin de la scène + chemin du nœud) et restauré quand on revient dans la salle.
+chemin de la scène + chemin du nœud) et restauré si la salle est rechargée.
 
 ### `PuzzleRoom` : une salle
 
 La racine d'une salle jouable utilise `puzzle_room.gd` (ou un script qui en hérite, comme
-`witch.gd`). Elle :
+`witch.gd` ou `weather.gd`). Quand elle est **active** :
 
-- détermine l'objet survolé (surbrillance, curseur main, infobulle) ;
+- elle détermine l'objet survolé (surbrillance, curseur main, infobulle) ;
 - clic gauche : utilise l'objet en main sur l'objet survolé (ou clic à main vide) ;
-- clic droit : lâche l'objet en main ;
-- affiche le HUD tant qu'elle est ouverte.
+- clic droit : lâche l'objet en main.
 
-Structure type (cf. `Scenes/Rooms/Witch/witch.tscn`) :
+C'est le monde (voir plus bas) qui active la salle à l'arrivée de la caméra. Une salle
+lancée seule avec **F6** s'active d'elle-même, pratique pour la tester.
+
+Autres réglages :
+
+| Propriété | Rôle |
+|---|---|
+| `debug_items` | Objets donnés par **F9** (build de debug). |
+| `required_items` | Objets nécessaires pour entrer la première fois (consommés). |
+| `locked_message` / `unlock_message` | Répliques quand c'est fermé / quand on ouvre. |
+
+`on_enter()` est appelée quand la caméra part vers la salle : à surcharger pour la préparer
+(c'est là que la salle du Temps change de météo).
+
+Structure type (cf. `Scenes/Rooms/Sun/sun.tscn`) :
 
 ```
-Witch (Node2D, witch.gd)
+Sun (Node2D, puzzle_room.gd)
 └── Room (Node2D, position 960×540, échelle 0.413)
-    ├── Background (Sprite2D, fond plein cadre)
-    ├── Rouet   (PuzzleInstance)
-    ├── Encens  (PuzzleInstance)
-    └── ...
+    ├── Background      (Sprite2D, fond 4777×2792)
+    ├── GateauLayer     (DepthLayer, depth 0.038)
+    │   └── Gateau      (PuzzleInstance)
+    └── CupcakeLayer    (DepthLayer, depth 1.236)
+        └── Cupcake     (PuzzleInstance)
 ```
 
-Toutes les instances sont enfants de `Room`, qui centre et met à l'échelle les images
-4777×2792 sur l'écran 1920×1080. Les coordonnées locales (`hit_rect`, `texture_offset`)
-sont donc en **pixels de l'image de fond, origine au centre de l'image**.
+`Room` centre et met à l'échelle les images 4777×2792 sur l'écran 1920×1080. Les
+coordonnées sous `Room` (positions, `hit_rect`, `texture_offset`) sont donc en
+**pixels de l'image de fond, origine au centre de l'image**.
 Pour convertir un pixel `(x, y)` de l'image : `(x - 2388.5, y - 1396)`.
 
 ### Créer une nouvelle salle
 
-1. Dupliquer `witch.tscn`, changer le fond et le script racine.
+1. Dupliquer une salle existante, changer le fond et, si besoin, le script racine.
 2. Créer `Data/Puzzles/<Salle>/` et un `.tres` par état (clic droit > Nouvelle ressource >
    `PuzzleObject`).
-3. Ajouter un `Sprite2D` par objet, lui mettre `puzzle_instance.gd` et son `initial_state`.
+3. Ajouter un `Sprite2D` par objet, lui mettre `puzzle_instance.gd` et son `initial_state`
+   (dans un `DepthLayer` s'il doit avoir de la profondeur).
+4. L'instancier sous `Rooms` dans `Scenes/World/world.tscn`, à sa place dans l'ordre.
+
+## Le monde : navigation en diaporama
+
+`Scenes/World/world.tscn` (scène principale) reprend la scène `Main.unity` : toutes les
+salles sont **côte à côte** et une caméra glisse de l'une à l'autre.
+
+```
+World (world.gd)
+├── Rooms          les salles, dans l'ordre : Intro, Witch, Sun, Weather, Donkey, Outro
+├── Camera         Camera2D déplacée par un tween
+├── Wall0..4       murs noirs entre les salles (créés par le script)
+└── Navigation     flèches gauche/droite + « Cliquez pour commencer »
+```
+
+- Le script place la salle *i* à `x = i × room_stride` (1973 px, la largeur d'un fond à l'échelle 0,413).
+- **Intro** : un clic n'importe où, **Entrée** ou **Espace** lance le glissement vers la
+  première salle. On ne peut plus y revenir (comme dans Unity).
+- **Flèches** : passent à la salle voisine en `slide_duration` secondes, avec une courbe
+  « ease in-out » (Unity : fondu Cinemachine de 2 s). Pendant le glissement, rien n'est cliquable.
+- **Clavier** : **←/→**, **Q/A** et **D** font la même chose que les flèches à l'écran
+  (Q/A et D par position de touche, donc en AZERTY comme en QWERTY). ←/→ passent par les
+  actions `ui_left`/`ui_right` : la croix d'une manette marche aussi.
+- **Salle verrouillée** : si la salle visée a des `required_items`, on n'y va que si on les a.
+- **Outro** : pas de flèche pour y aller. Quand le joueur obtient `ending_item` (la bourse
+  pleine), le monde attend `ending_delay` secondes puis glisse vers l'outro.
+- **Suivi de la souris** : la caméra se décale doucement vers le curseur (`look_amount`,
+  `look_smoothing`), comme `CameraControl.cs`. Le débattement reste dans la marge du fond.
+
+## La parallaxe : `DepthLayer`
+
+Dans Unity, la caméra était en **perspective** et les objets posés à différentes
+profondeurs devant le fond : en glissant d'une salle à l'autre ou en suivant la souris,
+les objets proches défilaient plus vite que le fond.
+
+En 2D, un `DepthLayer` (`Scripts/Puzzle/depth_layer.gd`) recrée cet effet : il se décale de
+`(centre de la vue - sa position d'origine) × depth`.
+
+| `depth` | Effet |
+|---|---|
+| 0 | Bouge avec le fond (aucun effet). |
+| > 0 | Plus proche : défile plus vite que le fond. |
+| < 0 | Plus loin : défile moins vite. |
+
+Le décalage est nul quand la vue est centrée sur la position d'origine du calque : on le
+place donc à la position 0 sous `Room`, et ses enfants à leur place « vue de face ».
+
+Les positions, échelles et profondeurs des objets des salles Soleil et Temps sont calculées
+depuis les prefabs Unity : pour une profondeur locale `z` (négative = vers la caméra),
+`depth = 27,13 / (27,13 + z) - 1`, et la position et l'échelle sont multipliées par
+`depth + 1` (projection perspective). Exemple : le cupcake est à `z = -15`, d'où
+`depth ≈ 1,24`. Les murs noirs ont `depth = 0,18` (5 unités devant les fonds dans Unity).
+
+Les objets de la salle Witch sont dessinés sur des overlays calés au pixel sur le fond :
+ils restent à `depth = 0`.
 
 ## Interface (`Hud`)
 
@@ -172,54 +244,37 @@ Pour convertir un pixel `(x, y)` de l'image : `(x - 2388.5, y - 1396)`.
 - **Objet en main** : son icône suit le curseur ;
 - **Infobulle** : nom de l'objet survolé, ou « Utiliser X sur Y ».
 
-Police : `unity_assets/Art/alagard.ttf` (celle de la version Unity). Le thème est une
-sous-ressource de la scène, modifiable dans l'éditeur.
+Le HUD est caché sur l'intro et l'outro. Police : `unity_assets/Art/alagard.ttf` (celle de
+la version Unity). Le thème est une sous-ressource de la scène, modifiable dans l'éditeur.
 
 ## `GameState`
 
 Autoload qui garde tout ce qui doit survivre aux changements de salle :
-inventaire, objet en main, état des instances, compteurs de clics.
+inventaire, objet en main, état des instances, compteurs de clics, et des **drapeaux**
+libres (`get_flag` / `set_flag`) : météo courante, salles déverrouillées…
 `GameState.reset()` remet la partie à zéro.
 
 Signaux : `inventory_changed`, `selected_item_changed(item)`, `message_requested(text)`.
+
+## Images
+
+Les images viennent de `unity_assets/Art/`, copiées sous `Scenes/Rooms/<Salle>/Sprites/`
+(décors) et `Scenes/Items/<Salle>/<Objet>/Sprites/` (icônes), avec des noms sans accents.
+
+- Les overlays « plein cadre » (même taille que le fond, presque entièrement transparents)
+  sont **recadrés** sur leur dessin, et leur position reportée dans `texture_offset` :
+  une image 4777×2792 occupe ≈ 53 Mo de mémoire vidéo, même pour une bougie.
+- Les icônes d'inventaire sont réduites à 256 px maximum (elles s'affichent en 96 px).
+- Les fonds restent en pleine résolution ; toutes les salles étant chargées en même temps
+  (≈ 8 fonds), le jeu utilise quelques centaines de Mo de mémoire vidéo.
 
 ## Outils de debug (build de debug uniquement)
 
 | Touche | Effet |
 |---|---|
 | F1 | Liste l'inventaire dans la console. |
-| F9 | Ajoute à l'inventaire les `debug_items` de la salle (objets venant de salles pas encore portées). |
+| F6 (éditeur) | Lance la salle ouverte seule, sans le monde. |
+| F9 | Ajoute à l'inventaire les `debug_items` de la salle (objets venant d'autres salles). |
 
-## Salle Witch : état actuel
-
-Énigmes branchées (textes repris des assets Unity `unity_assets/Features/Moon/`) :
-
-| Objet | Chaîne |
-|---|---|
-| Bougie | clic → ramassée (`bougie_inv`) |
-| Encens | `bougie_inv` (non consommée) → encens allumé (fumée) |
-| Fiole | clic → ramassée (`fiole_vide_inv`), à remplir de pluie dans la salle Météo |
-| Plante | `flacon_pluie` → arrosée → `rayon_soleil` → clé visible → clic → **clé de la Lune** |
-| Rouet | `roue` → rouet avec roue → `coton` → donne une **bobine de fil** |
-
-`flacon_pluie`, `roue`, `coton` (salle Météo) et `rayon_soleil` (salle Soleil) sont dans
-`Data/Puzzles/Weather/` et `Data/Puzzles/Sun/` ; tant que ces salles ne sont pas portées,
-on les obtient avec **F9**.
-
-Différences assumées avec la version Unity :
-
-- la plante n'est plus ramassable (`plant-neutre` → `plant-neutre_inv` côté Unity, ce qui
-  rendait la chaîne d'arrosage impossible) ;
-- la chaîne de la plante (eau puis soleil) et celle du rouet (roue puis coton) n'étaient
-  pas reliées dans Unity : elles sont reconstruites à partir des états et des sprites existants ;
-- deux répliques de refus ont été ajoutées (soleil sur la plante sèche, coton sur le rouet sans roue).
-
-Reste à faire / à vérifier :
-
-- la **lavande** (`lavander`), la **lune en métal** et le **tapis** (`tapis-lune`, `tissu-tapis`)
-  existent côté Unity mais n'ont pas de position connue dans le décor : non placés ;
-- l'emplacement de l'encens reprend celui de la fumée dans l'ancienne scène Godot ; à
-  ajuster si l'encens doit être ailleurs ;
-- la clé de la Lune et la bobine de fil ne servent encore à rien (dépendent des autres salles) ;
-- `Scenes/Items/Witch/Candle/Candle.tscn` n'est plus utilisé (remplacé par les
-  `PuzzleInstance`).
+Le contenu des salles et la solution du jeu sont décrits dans
+[salles-et-enigmes.md](salles-et-enigmes.md).

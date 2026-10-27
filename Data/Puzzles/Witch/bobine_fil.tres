@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
-[ext_resource type="Texture2D" path="res://unity_assets/Art/Icones/Witçh/bobine_de_fil.png" id="2_bobine_de_fil"]
+[ext_resource type="Texture2D" path="res://Scenes/Items/Witch/Thread/Sprites/thread.png" id="2_thread"]
 
 [resource]
 script = ExtResource("1_obj")
 id = &"bobine_fil"
 display_name = "Bobine de fil"
 messages = Array[String](["Une bobine de fil."])
-icon = ExtResource("2_bobine_de_fil")
+icon = ExtResource("2_thread")

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Sun/Sprites/cake_empty.png" id="2_cake_empty"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="3_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/arc_en_ciel.tres" id="4_arc_en_ciel"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/gateau_arc.tres" id="5_gateau_arc"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/partition_inv.tres" id="6_partition_inv"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("3_puzzle_interaction")
+item = ExtResource("4_arc_en_ciel")
+next_state = ExtResource("5_gateau_arc")
+
+[sub_resource type="Resource" id="Resource_2"]
+script = ExtResource("3_puzzle_interaction")
+item = ExtResource("6_partition_inv")
+accepted = false
+message = "Il manque encore un peu de couleur."
+
+[resource]
+script = ExtResource("1_obj")
+id = &"gateau"
+display_name = "Pâte à gâteau"
+messages = Array[String](["Un peu de ci, un peu de ça !"])
+texture = ExtResource("2_cake_empty")
+interactions = Array[Resource]([SubResource("Resource_1"), SubResource("Resource_2")])

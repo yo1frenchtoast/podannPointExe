@@ -5,13 +5,11 @@
 [node name="Outro" type="Node2D"]
 metadata/_edit_lock_ = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Room" type="Node2D" parent="."]
 position = Vector2(960, 540)
-scale = Vector2(0.402, 0.402)
+scale = Vector2(0.413, 0.413)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Background" type="Sprite2D" parent="Room"]
 texture = ExtResource("1_2ya64")
 metadata/_edit_lock_ = true

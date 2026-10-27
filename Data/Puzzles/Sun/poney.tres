@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Sun/Sprites/pony.png" id="2_pony"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="3_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/cupcake_inv.tres" id="4_cupcake_inv"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/poney_arc.tres" id="5_poney_arc"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("3_puzzle_interaction")
+item = ExtResource("4_cupcake_inv")
+next_state = ExtResource("5_poney_arc")
+
+[resource]
+script = ExtResource("1_obj")
+id = &"poney"
+display_name = "Poney"
+messages = Array[String](["Trop mignon !"])
+texture = ExtResource("2_pony")
+interactions = Array[Resource]([SubResource("Resource_1")])

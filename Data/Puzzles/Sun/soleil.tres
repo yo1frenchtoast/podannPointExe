@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Sun/Sprites/sun_full.png" id="2_sun_full"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="3_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/soleil_croque.tres" id="4_soleil_croque"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/rayon_soleil.tres" id="5_rayon_soleil"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("3_puzzle_interaction")
+next_state = ExtResource("4_soleil_croque")
+give_item = ExtResource("5_rayon_soleil")
+
+[resource]
+script = ExtResource("1_obj")
+id = &"soleil"
+display_name = "Soleil"
+messages = Array[String](["Il a une bonne tête, ce soleil."])
+texture = ExtResource("2_sun_full")
+interactions = Array[Resource]([SubResource("Resource_1")])

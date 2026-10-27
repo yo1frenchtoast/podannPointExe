@@ -1,18 +1,75 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj4stbddrcc7b"]
+[gd_scene load_steps=11 format=3 uid="uid://dj4stbddrcc7b"]
 
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_room.gd" id="1_room"]
 [ext_resource type="Texture2D" uid="uid://ccmkpnvyqn2mj" path="res://Scenes/Rooms/Sun/Sprites/sun.png" id="1_x8mam"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/depth_layer.gd" id="2_depth"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_instance.gd" id="3_inst"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/gateau.tres" id="4_gateau"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/partition.tres" id="5_partition"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/poney.tres" id="6_poney"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/soleil.tres" id="7_soleil"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/cupcake.tres" id="8_cupcake"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Weather/note_musique.tres" id="9_note"]
 
 [node name="Sun" type="Node2D"]
+script = ExtResource("1_room")
+debug_items = Array[Resource]([ExtResource("9_note")])
 metadata/_edit_lock_ = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2(960, 540)
-transform = Transform2D(1, 0, 0, 1, 960, 540)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Room" type="Node2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.413, 0.413)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-scale = Vector2(0.402, 0.402)
+[node name="Background" type="Sprite2D" parent="Room"]
 texture = ExtResource("1_x8mam")
 metadata/_edit_lock_ = true
+
+[node name="GateauLayer" type="Node2D" parent="Room"]
+script = ExtResource("2_depth")
+depth = 0.038
+
+[node name="Gateau" type="Sprite2D" parent="Room/GateauLayer"]
+position = Vector2(-854.5, 323.9)
+scale = Vector2(0.6602, 0.6602)
+script = ExtResource("3_inst")
+initial_state = ExtResource("4_gateau")
+
+[node name="PartitionLayer" type="Node2D" parent="Room"]
+script = ExtResource("2_depth")
+depth = 0.284
+
+[node name="Partition" type="Sprite2D" parent="Room/PartitionLayer"]
+position = Vector2(-934.7, -752.4)
+scale = Vector2(0.5912, 0.5912)
+script = ExtResource("3_inst")
+initial_state = ExtResource("5_partition")
+
+[node name="PoneyLayer" type="Node2D" parent="Room"]
+script = ExtResource("2_depth")
+depth = 0.348
+
+[node name="Poney" type="Sprite2D" parent="Room/PoneyLayer"]
+position = Vector2(1281.7, -361.2)
+scale = Vector2(0.9252, 0.9252)
+script = ExtResource("3_inst")
+initial_state = ExtResource("6_poney")
+
+[node name="SoleilLayer" type="Node2D" parent="Room"]
+script = ExtResource("2_depth")
+depth = 0.584
+
+[node name="Soleil" type="Sprite2D" parent="Room/SoleilLayer"]
+scale = Vector2(1.5837, 1.5837)
+script = ExtResource("3_inst")
+initial_state = ExtResource("7_soleil")
+
+[node name="CupcakeLayer" type="Node2D" parent="Room"]
+script = ExtResource("2_depth")
+depth = 1.236
+
+[node name="Cupcake" type="Sprite2D" parent="Room/CupcakeLayer"]
+position = Vector2(-1464.8, 120.8)
+scale = Vector2(0.7232, 0.7232)
+script = ExtResource("3_inst")
+initial_state = ExtResource("8_cupcake")

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Sun/Sprites/sun_eaten.png" id="2_sun_eaten"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"soleil_croque"
+display_name = "Soleil"
+messages = Array[String](["Il en manque un morceau... ça repoussera."])
+texture = ExtResource("2_sun_eaten")

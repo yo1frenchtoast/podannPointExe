@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Sun/Sprites/cake_rainbow.png" id="2_cake_rainbow"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="3_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/partition_inv.tres" id="4_partition_inv"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/gateau_musique.tres" id="5_gateau_musique"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("3_puzzle_interaction")
+item = ExtResource("4_partition_inv")
+next_state = ExtResource("5_gateau_musique")
+
+[resource]
+script = ExtResource("1_obj")
+id = &"gateau_arc"
+display_name = "Pâte à gâteau"
+messages = Array[String](["Jolie couleur !"])
+texture = ExtResource("2_cake_rainbow")
+texture_offset = Vector2(0, -72.0)
+interactions = Array[Resource]([SubResource("Resource_1")])

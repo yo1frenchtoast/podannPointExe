@@ -33,6 +33,8 @@ var selected_item: PuzzleObject = null
 var _click_counts: Dictionary = {}
 # clé d'instance (voir PuzzleInstance.get_state_key) -> {"state": PuzzleObject, "removed": bool}
 var _instance_states: Dictionary = {}
+# Valeurs libres propres aux salles (météo courante, salle déverrouillée...). Voir get_flag.
+var _flags: Dictionary = {}
 var _audio: AudioStreamPlayer
 
 
@@ -54,6 +56,7 @@ func reset() -> void:
 	inventory.clear()
 	_click_counts.clear()
 	_instance_states.clear()
+	_flags.clear()
 	selected_item = null
 	inventory_changed.emit()
 	selected_item_changed.emit(null)
@@ -187,5 +190,19 @@ func store_instance_state(key: String, state: PuzzleObject, removed: bool) -> vo
 ## ou un dictionnaire vide si l'instance n'a jamais changé.
 func get_instance_state(key: String) -> Dictionary:
 	return _instance_states.get(key, {})
+
+#endregion
+
+
+#region Drapeaux
+
+## Valeur libre mémorisée pour la partie (ex. [code]&"weather_index"[/code] pour la météo,
+## [code]"unlocked:<scène>"[/code] pour une salle ouverte). [param default] si absente.
+func get_flag(key: StringName, default: Variant = null) -> Variant:
+	return _flags.get(key, default)
+
+
+func set_flag(key: StringName, value: Variant) -> void:
+	_flags[key] = value
 
 #endregion

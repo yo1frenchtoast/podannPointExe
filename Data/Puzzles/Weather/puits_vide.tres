@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="2_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Witch/fiole_vide_inv.tres" id="3_fiole_vide_inv"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Weather/flacon_pluie.tres" id="4_flacon_pluie"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("2_puzzle_interaction")
+item = ExtResource("3_fiole_vide_inv")
+message = "Un peu de l'eau de pluie du puits... Une pluie salvatrice !"
+give_item = ExtResource("4_flacon_pluie")
+
+[resource]
+script = ExtResource("1_obj")
+id = &"puits_vide"
+display_name = "Puits"
+messages = Array[String](["Un simple puits."])
+interactions = Array[Resource]([SubResource("Resource_1")])

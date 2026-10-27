@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Sun/Sprites/pony_rainbow.png" id="2_pony_rainbow"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="3_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/poney_repu.tres" id="4_poney_repu"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/arc_en_ciel.tres" id="5_arc_en_ciel"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("3_puzzle_interaction")
+next_state = ExtResource("4_poney_repu")
+give_item = ExtResource("5_arc_en_ciel")
+
+[resource]
+script = ExtResource("1_obj")
+id = &"poney_arc"
+display_name = "Poney"
+messages = Array[String](["Beurk. Mais c'est joli."])
+texture = ExtResource("2_pony_rainbow")
+texture_offset = Vector2(-262.0, -30.5)
+interactions = Array[Resource]([SubResource("Resource_1")])

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Items/Sun/Cupcake/Sprites/cupcake.png" id="2_cupcake"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"cupcake_inv"
+display_name = "Cupcake"
+messages = Array[String](["Un cupcake à la fraise. Pas pour moi."])
+icon = ExtResource("2_cupcake")

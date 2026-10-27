@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Items/Witch/Fabric/Sprites/fabric.png" id="2_fabric"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="3_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Witch/bobine_fil.tres" id="4_bobine_fil"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Donkey/bourse.tres" id="5_bourse"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("3_puzzle_interaction")
+item = ExtResource("4_bobine_fil")
+message = "Un peu de couture... et voilà une bourse !"
+next_state = ExtResource("5_bourse")
+consume_item = false
+
+[resource]
+script = ExtResource("1_obj")
+id = &"tissu"
+display_name = "Morceau de tissu"
+messages = Array[String](["Morceau de tissu."])
+icon = ExtResource("2_fabric")
+interactions = Array[Resource]([SubResource("Resource_1")])

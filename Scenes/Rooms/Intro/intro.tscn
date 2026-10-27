@@ -1,20 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://di7ry2p4rxibo"]
+[gd_scene load_steps=2 format=3 uid="uid://di7ry2p4rxibo"]
 
-[ext_resource type="Script" path="res://Scenes/Rooms/Intro/Scripts/intro.gd" id="1_txegg"]
 [ext_resource type="Texture2D" uid="uid://csskmtl1v2e1v" path="res://Scenes/Rooms/Intro/Sprites/podann_point_exe.png" id="2_wisqo"]
 
 [node name="Intro" type="Node2D"]
-script = ExtResource("1_txegg")
 metadata/_edit_lock_ = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-offset = Vector2(960, 540)
-transform = Transform2D(1, 0, 0, 1, 960, 540)
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Room" type="Node2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.413, 0.413)
 metadata/_edit_lock_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-scale = Vector2(0.402, 0.402)
+[node name="Background" type="Sprite2D" parent="Room"]
 texture = ExtResource("2_wisqo")
 metadata/_edit_lock_ = true

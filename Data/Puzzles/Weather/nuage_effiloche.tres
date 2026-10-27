@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Weather/Sprites/cloud.png" id="2_cloud"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"nuage_effiloche"
+display_name = "Nuage"
+messages = Array[String](["Il est un peu moins dodu qu'avant."])
+texture = ExtResource("2_cloud")

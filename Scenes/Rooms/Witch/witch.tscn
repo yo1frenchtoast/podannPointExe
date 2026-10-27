@@ -12,6 +12,7 @@
 [ext_resource type="Resource" path="res://Data/Puzzles/Weather/roue.tres" id="9_roue"]
 [ext_resource type="Resource" path="res://Data/Puzzles/Weather/coton.tres" id="10_coton"]
 [ext_resource type="Resource" path="res://Data/Puzzles/Sun/rayon_soleil.tres" id="11_rayon"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Witch/tapis.tres" id="12_tapis"]
 
 [node name="Witch" type="Node2D"]
 script = ExtResource("1_3a36c")
@@ -31,6 +32,11 @@ metadata/_edit_lock_ = true
 script = ExtResource("2_inst")
 initial_state = ExtResource("7_rouet")
 hit_rect = Rect2(-1008, 204, 580, 780)
+
+[node name="Tapis" type="Sprite2D" parent="Room"]
+script = ExtResource("2_inst")
+initial_state = ExtResource("12_tapis")
+hit_rect = Rect2(436, 559, 515, 390)
 
 [node name="Encens" type="Sprite2D" parent="Room"]
 script = ExtResource("2_inst")

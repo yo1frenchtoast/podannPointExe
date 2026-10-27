@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Weather/Sprites/bird_singing.png" id="2_bird_singing"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"chant_ecoute"
+display_name = "Chant d'oiseaux"
+messages = Array[String](["Après la pluie, vient le beau temps !"])
+texture = ExtResource("2_bird_singing")

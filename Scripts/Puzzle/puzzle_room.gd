@@ -2,34 +2,85 @@ class_name PuzzleRoom
 extends Node2D
 ## Script de base d'une salle jouable (remplace le raycast de `CustomCursor` côté Unity).
 ##
-## - cherche, parmi les [PuzzleInstance] de la salle, celui qui est sous la souris
+## Tant que la salle est [member active] :
+## - elle cherche, parmi ses [PuzzleInstance], celui qui est sous la souris
 ##   (le plus haut dans l'ordre d'affichage gagne) et le met en surbrillance ;
 ## - clic gauche : [method PuzzleInstance.interact] avec l'objet en main ;
-## - clic droit : lâche l'objet en main ;
-## - affiche le HUD (inventaire, dialogue, curseur) tant que la salle est ouverte.
+## - clic droit : lâche l'objet en main.
+##
+## Dans le jeu, les salles sont des enfants du monde (`Scenes/World/world.tscn`), qui les
+## active à l'arrivée de la caméra et appelle [method on_enter]. Lancée seule ([kbd]F6[/kbd]),
+## une salle s'active d'elle-même pour pouvoir la tester sans passer par le monde.
 ##
 ## Pour créer une salle : une scène dont la racine utilise ce script (ou un script qui en
-## hérite, comme `witch.gd`), avec les [PuzzleInstance] n'importe où en dessous.
+## hérite, comme `weather.gd`), avec les [PuzzleInstance] n'importe où en dessous.
 ##
 ## En build de debug, [kbd]F9[/kbd] ajoute [member debug_items] à l'inventaire pour tester
-## les énigmes dont les objets viennent de salles pas encore portées.
+## une énigme sans refaire toutes les précédentes.
 
 ## Objets donnés par [kbd]F9[/kbd] en build de debug (des [PuzzleObject]).
 @export var debug_items: Array[Resource] = []
+
+@export_group("Accès")
+## Objets (des [PuzzleObject]) nécessaires pour entrer la première fois dans la salle.
+## Ils sont retirés de l'inventaire au déverrouillage. Vide = salle libre.
+@export var required_items: Array[Resource] = []
+## Réplique quand il manque un des [member required_items].
+@export_multiline var locked_message: String = "C'est fermé."
+## Réplique au déverrouillage.
+@export_multiline var unlock_message: String = ""
+
+## Vrai quand le joueur peut interagir avec la salle.
+var active: bool = false:
+	set(value):
+		active = value
+		if not value:
+			_set_hovered(null)
+			Hud.set_hover_target(null)
 
 var _hovered: PuzzleInstance = null
 
 
 func _ready() -> void:
-	Hud.set_room_active(true)
+	# Salle lancée seule (F6) : pas de monde pour l'activer.
+	if get_parent() == get_tree().root:
+		Hud.set_room_active(true)
+		active = true
+		on_enter()
 
 
 func _exit_tree() -> void:
-	Hud.set_room_active(false)
-	Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+	if active:
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
+
+
+## Appelé par le monde quand la caméra part vers cette salle (avant qu'elle soit active).
+## À surcharger pour préparer la salle (ex. changer la météo).
+func on_enter() -> void:
+	pass
+
+
+## Vrai si on peut entrer. Au premier passage avec tous les [member required_items],
+## les consomme, mémorise l'ouverture et affiche [member unlock_message].
+## Sinon affiche [member locked_message].
+func try_unlock() -> bool:
+	if required_items.is_empty() or GameState.get_flag(_unlock_flag(), false):
+		return true
+	for item in required_items:
+		if not GameState.has_item(item as PuzzleObject):
+			GameState.show_message(locked_message)
+			return false
+	for item in required_items:
+		GameState.remove_item(item as PuzzleObject)
+	GameState.set_flag(_unlock_flag(), true)
+	if not unlock_message.is_empty():
+		GameState.show_message(unlock_message)
+	return true
 
 
 func _process(_delta: float) -> void:
+	if not active:
+		return
 	# Fait à chaque image (et pas seulement quand la souris bouge) pour suivre
 	# les objets qui apparaissent ou disparaissent sous un curseur immobile.
 	# Rien n'est survolé quand la souris est sur l'interface (barre d'inventaire).
@@ -39,6 +90,8 @@ func _process(_delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not active:
+		return
 	var mouse_event := event as InputEventMouseButton
 	var key_event := event as InputEventKey
 	if mouse_event != null and mouse_event.pressed:
@@ -78,3 +131,7 @@ func _set_hovered(instance: PuzzleInstance) -> void:
 	if _hovered != null:
 		_hovered.hovered = true
 	Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND if _hovered != null else Input.CURSOR_ARROW)
+
+
+func _unlock_flag() -> StringName:
+	return StringName("unlocked:" + scene_file_path)

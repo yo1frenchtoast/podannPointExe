@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Weather/Sprites/cart_broken.png" id="2_cart_broken"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"charrette_debris"
+display_name = "Charrette"
+messages = Array[String](["Il n'y a plus rien à en tirer."])
+texture = ExtResource("2_cart_broken")
+texture_offset = Vector2(0, 14.5)

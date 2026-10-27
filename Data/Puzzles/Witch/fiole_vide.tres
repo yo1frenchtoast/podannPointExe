@@ -16,4 +16,5 @@ id = &"fiole_vide"
 display_name = "Fiole vide"
 messages = Array[String](["Utile pour récupérer... du liquide ! *deuh*"])
 texture = ExtResource("2_bottle_empty")
+texture_offset = Vector2(382.5, 467.5)
 interactions = Array[Resource]([SubResource("Resource_1")])

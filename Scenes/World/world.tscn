@@ -1,0 +1,104 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://Scenes/World/Scripts/world.gd" id="1_world"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Donkey/bourse_pleine.tres" id="2_ending"]
+[ext_resource type="PackedScene" path="res://Scenes/Rooms/Intro/intro.tscn" id="3_intro"]
+[ext_resource type="PackedScene" path="res://Scenes/Rooms/Witch/witch.tscn" id="4_witch"]
+[ext_resource type="PackedScene" path="res://Scenes/Rooms/Sun/sun.tscn" id="5_sun"]
+[ext_resource type="PackedScene" path="res://Scenes/Rooms/Weather/weather.tscn" id="6_weather"]
+[ext_resource type="PackedScene" path="res://Scenes/Rooms/Donkey/donkey.tscn" id="7_donkey"]
+[ext_resource type="PackedScene" path="res://Scenes/Rooms/Outro/Outro.tscn" id="8_outro"]
+[ext_resource type="FontFile" path="res://unity_assets/Art/alagard.ttf" id="9_font"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nav"]
+
+[sub_resource type="Theme" id="Theme_nav"]
+default_font = ExtResource("9_font")
+Button/colors/font_color = Color(1, 0.97, 0.9, 0.85)
+Button/colors/font_hover_color = Color(1, 0.92, 0.6, 1)
+Button/colors/font_pressed_color = Color(1, 0.85, 0.4, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 18
+Button/font_sizes/font_size = 140
+Button/styles/focus = SubResource("StyleBoxEmpty_nav")
+Button/styles/hover = SubResource("StyleBoxEmpty_nav")
+Button/styles/normal = SubResource("StyleBoxEmpty_nav")
+Button/styles/pressed = SubResource("StyleBoxEmpty_nav")
+Label/colors/font_color = Color(1, 0.97, 0.9, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/constants/outline_size = 12
+Label/font_sizes/font_size = 48
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_world")
+ending_item = ExtResource("2_ending")
+
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="Intro" parent="Rooms" instance=ExtResource("3_intro")]
+
+[node name="Witch" parent="Rooms" instance=ExtResource("4_witch")]
+
+[node name="Sun" parent="Rooms" instance=ExtResource("5_sun")]
+
+[node name="Weather" parent="Rooms" instance=ExtResource("6_weather")]
+
+[node name="Donkey" parent="Rooms" instance=ExtResource("7_donkey")]
+
+[node name="Outro" parent="Rooms" instance=ExtResource("8_outro")]
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="Navigation" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="Left" type="Button" parent="Navigation"]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 12.0
+offset_top = -110.0
+offset_right = 132.0
+offset_bottom = 110.0
+grow_vertical = 2
+focus_mode = 0
+theme = SubResource("Theme_nav")
+text = "<"
+
+[node name="Right" type="Button" parent="Navigation"]
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -110.0
+offset_right = -12.0
+offset_bottom = 110.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 0
+theme = SubResource("Theme_nav")
+text = ">"
+
+[node name="StartLabel" type="Label" parent="Navigation"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -140.0
+offset_right = 400.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme = SubResource("Theme_nav")
+text = "Cliquez pour commencer"
+horizontal_alignment = 1
+vertical_alignment = 1

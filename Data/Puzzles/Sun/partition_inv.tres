@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Items/Sun/Partition/Sprites/partition.png" id="2_partition"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"partition_inv"
+display_name = "Partition"
+messages = Array[String](["Une partition complète, prête à être chantée."])
+icon = ExtResource("2_partition")

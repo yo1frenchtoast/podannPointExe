@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_room.gd" id="1_room"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Donkey/Sprites/donkey.png" id="2_bg"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_instance.gd" id="3_inst"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Donkey/tas_or.tres" id="4_or"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Donkey/peau_ane.tres" id="5_peau"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Donkey/bourse.tres" id="6_bourse"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Witch/cle_lune.tres" id="7_cle_lune"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/cle_soleil.tres" id="8_cle_soleil"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Weather/cle_temps.tres" id="9_cle_temps"]
+
+[node name="Donkey" type="Node2D"]
+script = ExtResource("1_room")
+debug_items = Array[Resource]([ExtResource("6_bourse")])
+required_items = Array[Resource]([ExtResource("7_cle_lune"), ExtResource("8_cle_soleil"), ExtResource("9_cle_temps")])
+locked_message = "Une porte à trois serrures : une lune, un soleil et un nuage. Il me faut les trois clés."
+unlock_message = "Les trois clés tournent... la porte s'ouvre !"
+metadata/_edit_lock_ = true
+
+[node name="Room" type="Node2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(0.413, 0.413)
+metadata/_edit_lock_ = true
+
+[node name="Background" type="Sprite2D" parent="Room"]
+texture = ExtResource("2_bg")
+metadata/_edit_lock_ = true
+
+[node name="TasOr" type="Sprite2D" parent="Room"]
+script = ExtResource("3_inst")
+initial_state = ExtResource("4_or")
+hit_rect = Rect2(-900, -700, 2450, 1350)
+
+[node name="PeauAne" type="Sprite2D" parent="Room"]
+script = ExtResource("3_inst")
+initial_state = ExtResource("5_peau")
+hit_rect = Rect2(-1290, 100, 560, 700)

@@ -17,4 +17,5 @@ id = &"plante_cle"
 display_name = "Plante"
 messages = Array[String](["Tout ça pour ça !"])
 texture = ExtResource("2_plant_key")
+texture_offset = Vector2(1930.5, 458.0)
 interactions = Array[Resource]([SubResource("Resource_1")])

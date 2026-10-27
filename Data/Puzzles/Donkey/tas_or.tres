@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="2_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Donkey/bourse.tres" id="3_bourse"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Donkey/bourse_pleine.tres" id="4_bourse_pleine"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("2_puzzle_interaction")
+item = ExtResource("3_bourse")
+give_item = ExtResource("4_bourse_pleine")
+
+[resource]
+script = ExtResource("1_obj")
+id = &"tas_or"
+display_name = "Tas d'or"
+messages = Array[String](["L'âne avait un transit prolifique."])
+interactions = Array[Resource]([SubResource("Resource_1")])
