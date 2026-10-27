@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="2_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Weather/roue.tres" id="3_roue"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Witch/rouet_roue.tres" id="4_rouet_roue"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Weather/coton.tres" id="5_coton"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("2_puzzle_interaction")
+item = ExtResource("3_roue")
+next_state = ExtResource("4_rouet_roue")
+
+[sub_resource type="Resource" id="Resource_2"]
+script = ExtResource("2_puzzle_interaction")
+item = ExtResource("5_coton")
+accepted = false
+message = "Sans roue, ce rouet ne filera rien du tout."
+
+[resource]
+script = ExtResource("1_obj")
+id = &"rouet_neutre"
+display_name = "Rouet"
+messages = Array[String](["On dirait qu'il manque un élément."])
+interactions = Array[Resource]([SubResource("Resource_1"), SubResource("Resource_2")])

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Items/Witch/Bottle/Sprites/bottle_full.png" id="2_bottle_full"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"flacon_pluie"
+display_name = "Flacon de pluie"
+messages = Array[String](["Une pluie salvatrice..."])
+icon = ExtResource("2_bottle_full")

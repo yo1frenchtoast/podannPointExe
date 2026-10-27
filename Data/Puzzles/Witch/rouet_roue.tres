@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Witch/Sprites/wheel.png" id="2_wheel"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="3_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Weather/coton.tres" id="4_coton"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Witch/rouet_fil.tres" id="5_rouet_fil"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Witch/bobine_fil.tres" id="6_bobine_fil"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("3_puzzle_interaction")
+item = ExtResource("4_coton")
+message = "Super, du fil... J'ai bien une idée pour m'en servir, mais bon..."
+next_state = ExtResource("5_rouet_fil")
+give_item = ExtResource("6_bobine_fil")
+
+[resource]
+script = ExtResource("1_obj")
+id = &"rouet_roue"
+display_name = "Rouet"
+messages = Array[String](["Une machine à filer. D'autres questions ?"])
+texture = ExtResource("2_wheel")
+texture_offset = Vector2(-644.068, 450.363)
+interactions = Array[Resource]([SubResource("Resource_1")])

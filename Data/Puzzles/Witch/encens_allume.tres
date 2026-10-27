@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Witch/Sprites/smoke.png" id="2_smoke"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"encens_allume"
+display_name = "Encens allumé"
+messages = Array[String](["Une odeur à cacher peut-être ?"])
+texture = ExtResource("2_smoke")
+texture_offset = Vector2(152.542, 2.42126)

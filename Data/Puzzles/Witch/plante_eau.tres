@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Items/Witch/Plant/Sprites/plant_water.png" id="2_plant_water"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="3_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/rayon_soleil.tres" id="4_rayon_soleil"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Witch/plante_cle.tres" id="5_plante_cle"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("3_puzzle_interaction")
+item = ExtResource("4_rayon_soleil")
+next_state = ExtResource("5_plante_cle")
+
+[resource]
+script = ExtResource("1_obj")
+id = &"plante_eau"
+display_name = "Plante arrosée"
+messages = Array[String](["Super, de l'eau, tu veux un nobel en biologie ?"])
+texture = ExtResource("2_plant_water")
+texture_offset = Vector2(1930.5, 459.5)
+interactions = Array[Resource]([SubResource("Resource_1")])

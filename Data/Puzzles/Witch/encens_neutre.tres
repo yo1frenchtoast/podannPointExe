@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="2_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Witch/bougie_inv.tres" id="3_bougie_inv"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Witch/encens_allume.tres" id="4_encens_allume"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("2_puzzle_interaction")
+item = ExtResource("3_bougie_inv")
+next_state = ExtResource("4_encens_allume")
+consume_item = false
+
+[resource]
+script = ExtResource("1_obj")
+id = &"encens_neutre"
+display_name = "Encens"
+messages = Array[String](["« Tibetan vibe ». Très hippie."])
+interactions = Array[Resource]([SubResource("Resource_1")])

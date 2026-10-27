@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Items/Witch/Plant/Sprites/plant_sun.png" id="2_plant_sun"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"plante_soleil"
+display_name = "Plante"
+messages = Array[String](["Gaffe à pas la cramer quand même..."])
+texture = ExtResource("2_plant_sun")
+texture_offset = Vector2(1930.5, 459.5)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://unity_assets/Art/Icones/Sun room/Sun_içon.png" id="2_Sun_içon"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"rayon_soleil"
+display_name = "Rayon de soleil"
+messages = Array[String](["Au soleil, m'exposer un peu plus..."])
+icon = ExtResource("2_Sun_içon")

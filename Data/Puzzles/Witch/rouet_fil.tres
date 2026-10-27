@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Witch/Sprites/wheel.png" id="2_wheel"]
+
+[resource]
+script = ExtResource("1_obj")
+id = &"rouet_fil"
+display_name = "Rouet"
+messages = Array[String](["Super, du fil... J'ai bien une idée pour m'en servir, mais bon..."])
+texture = ExtResource("2_wheel")
+texture_offset = Vector2(-644.068, 450.363)

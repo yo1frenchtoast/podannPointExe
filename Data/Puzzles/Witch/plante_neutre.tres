@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PuzzleObject" load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_object.gd" id="1_obj"]
+[ext_resource type="Texture2D" path="res://Scenes/Rooms/Witch/Sprites/plant_moon.png" id="2_plant_moon"]
+[ext_resource type="Script" path="res://Scripts/Puzzle/puzzle_interaction.gd" id="3_puzzle_interaction"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Weather/flacon_pluie.tres" id="4_flacon_pluie"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Witch/plante_eau.tres" id="5_plante_eau"]
+[ext_resource type="Resource" path="res://Data/Puzzles/Sun/rayon_soleil.tres" id="6_rayon_soleil"]
+
+[sub_resource type="Resource" id="Resource_1"]
+script = ExtResource("3_puzzle_interaction")
+item = ExtResource("4_flacon_pluie")
+next_state = ExtResource("5_plante_eau")
+
+[sub_resource type="Resource" id="Resource_2"]
+script = ExtResource("3_puzzle_interaction")
+item = ExtResource("6_rayon_soleil")
+accepted = false
+message = "Elle a surtout soif, là."
+
+[resource]
+script = ExtResource("1_obj")
+id = &"plante_neutre"
+display_name = "Plante"
+messages = Array[String](["Il ne lui manque pas grand chose pour s'épanouir..."])
+texture = ExtResource("2_plant_moon")
+interactions = Array[Resource]([SubResource("Resource_1"), SubResource("Resource_2")])
