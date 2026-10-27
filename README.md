@@ -22,6 +22,19 @@ vers **Godot 4.7** (version Steam).
 - [Moteur de puzzle](docs/moteur-de-puzzle.md) : fonctionnement, création d'énigmes et de
   salles, navigation entre les salles, parallaxe.
 - [Salles et énigmes](docs/salles-et-enigmes.md) : contenu de chaque salle et solution complète.
+- [Utilisation de l'IA](docs/utilisation-ia.md) : ce qui a été fait avec une IA, et ce qui vient de la jam.
+
+## Utilisation de l'IA
+
+Le jeu d'origine (concept, dessins, textes, code Unity, choix des musiques) vient de la
+game jam. Le portage et la finition sous Godot ont été réalisés en 2026 avec **Claude**
+(IA d'Anthropic, via Claude Code), sous la direction et avec les tests de l'auteur :
+tout le code GDScript, les énigmes des salles Soleil, Temps et Âne, une quinzaine de
+répliques, la répartition des musiques et la documentation. Aucune image, musique ni son
+n'a été créé par IA générative ; seules deux icônes provisoires de bourse ont été
+dessinées par un script.
+
+Le détail est dans [docs/utilisation-ia.md](docs/utilisation-ia.md).
 
 ## Lancer le jeu
 
